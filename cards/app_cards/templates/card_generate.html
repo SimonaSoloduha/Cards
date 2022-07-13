@@ -1,0 +1,16 @@
+{% extends 'main.html'%}
+
+<body>
+
+    {% block content %}
+
+        <h2>Генератор карт</h2>
+        <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+            <button type="submit">Створити</button>
+        </form>
+
+    {% endblock %}}
+
+</body>

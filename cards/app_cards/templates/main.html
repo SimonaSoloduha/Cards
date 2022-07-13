@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+
+<body>
+
+<header>
+    <a href="{% url 'card_list' %}">Всi карти</a> // <a href="{% url 'card_generate' %}">Генератор карт</a>
+    <hr>
+
+</header>
+<div>
+
+    {% block content %}
+    <h1>Головна</h1>
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

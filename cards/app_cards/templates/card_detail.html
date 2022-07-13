@@ -1,0 +1,24 @@
+{% extends 'main.html'%}
+
+<body>
+
+    {% block content %}
+
+    <form method="post" action="/{{ card.id }}/">
+        {% csrf_token %}
+        <h2>Даннi картки</h2>
+        <p>Серія картки: {{ card.series }}</p>
+        <p>Номер картки: {{ card.number }}</p>
+        <p>Дата випуску картки: {{ card.release_date }}</p>
+        <p>Дата закінчення активності картки: {{ card.expiration_date }}</p>
+        <p>CVV: {{ card.cvv }}</p>
+        <p>Сума: {{ card.sum_card }}</p>
+        <p>Статус: {{ card_form.activity_flag }}</p>
+
+        <button type="submit">Зберегти</button>
+        <input type="submit" name="confirm_delete" value="Видалити">
+    </form>
+
+    {% endblock %}}
+
+</body>

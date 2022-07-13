@@ -1,0 +1,45 @@
+{% extends 'main.html'%}
+
+<body>
+
+    {% block content %}
+    <h1>Все карты</h1>
+
+    <form method="get">
+        {{ card_filter.form.as_table }}
+        <button type="submit" />Поиск</button>
+    </form>
+
+
+    {% if card_filter.qs %}
+        <table class="table">
+              <thead>
+                    <tr>
+                        <th>Серія</th>
+                        <th>Номер</th>
+                        <th>Дата випуску</th>
+                        <th>Дата закінчення активності</th>
+                        <th>Статус</th>
+
+                    </tr>
+              </thead>
+              <tbody>
+                  {% for card in card_filter.qs %}
+                        <tr scope="row">
+                            <th>{{ card.series }}</th>
+                            <th><a href="/{{ card.id }}/">{{ card.number }}</a></th>
+                            <th>{{ card.release_date }}</th>
+                            <th>{{ card.expiration_date }}</th>
+                            <th>{{ card.activity_flag }}</th>
+                        </tr>
+                  {% endfor %}
+              </tbody>
+        </table>
+
+    {% else %}
+        <p>Карт нет</p>
+    {% endif %}
+
+    {% endblock %}}
+
+</body>
